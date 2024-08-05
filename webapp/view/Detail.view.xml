@@ -1,0 +1,94 @@
+<mvc:View
+    controllerName="employeemanagement.controller.Detail"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:semantic="sap.f.semantic"
+	xmlns:form="sap.ui.layout.form"
+	xmlns:l="sap.ui.layout"
+	xmlns:upload="sap.m.upload">
+
+	<Page id="page" titleAlignment="Center" title="Employee's Information" showNavButton="true" navButtonPress="onBackPress">
+    	<content>
+		<semantic:SemanticPage id="semanticPageId" headerPinnable="false" toggleHeaderOnTitleClick="false">
+			<semantic:titleHeading>
+				<Title id="123title" text="{jsonModel>/detailPageData/EMP_NAME}"/>
+			</semantic:titleHeading>
+			<semantic:headerContent>
+	            <FlexBox alignItems="Start" justifyContent="End">
+	              	<Panel backgroundDesign="Transparent">
+		               <Button text="Edit" icon="sap-icon://edit" press="onEditPress" visible="{=${jsonModel>/bDisplay} ? true : false}"/>
+		               <Button text="Save" icon="sap-icon://save" press="onSavepress" visible="{=${jsonModel>/bEdit} ? true : false}"/>
+					</Panel>
+	            </FlexBox>
+            </semantic:headerContent>
+			<semantic:content>
+				<l:VerticalLayout width="100%">
+					<Panel backgroundDesign="Transparent" headerText="General Information">
+						<content>
+							<form:SimpleForm maxContainerCols="2" editable="false" layout="ResponsiveGridLayout" labelSpanL="3" labelSpanM="3" emptySpanL="4"
+								emptySpanM="4" columnsL="1" columnsM="1">
+								<form:content>
+									<Label text="Name"/>
+									<Text text="{jsonModel>/detailPageData/EMP_NAME}" visible="{=${jsonModel>/bDisplay} ? true : false}"/>
+									<Input value="{jsonModel>/SelectedEmployeeToUpdate/EMP_NAME}" visible="{=${jsonModel>/bEdit} ? true : false}"/>
+									<Label text="Email"/>
+									<Text text="{jsonModel>/detailPageData/EMP_EMAIL}" visible="{=${jsonModel>/bDisplay} ? true : false}"/>
+									<Input value="{jsonModel>/SelectedEmployeeToUpdate/EMP_EMAIL}" visible="{=${jsonModel>/bEdit} ? true : false}"/>
+									<Label text="Salary"/>
+									<Text text="{jsonModel>/detailPageData/EMP_SALARY}" visible="{=${jsonModel>/bDisplay} ? true : false}"/>
+									<Input value="{jsonModel>/SelectedEmployeeToUpdate/EMP_SALARY}" visible="{=${jsonModel>/bEdit} ? true : false}"/>
+									<Label text="Experiance"/>
+									<Text text="{jsonModel>/detailPageData/EMP_EXPERIANCE}" visible="{=${jsonModel>/bDisplay} ? true : false}"/>
+									<Input value="{jsonModel>/SelectedEmployeeToUpdate/EMP_EXPERIANCE}" visible="{=${jsonModel>/bEdit} ? true : false}"/>
+
+									<Label text="Profession"/>
+									<Text text="{jsonModel>/detailPageData/EMP_PRO_PRO_ID} ({jsonModel>/detailPageData/EMP_PRO/PRO_LIST})" visible="{=${jsonModel>/bDisplay} ? true : false}"/>
+									<Input value="{jsonModel>/SelectedEmployeeToUpdate/EMP_PRO_PRO_ID}" visible="{=${jsonModel>/bEdit} ? true : false}"/>		
+								</form:content>
+							</form:SimpleForm>
+						</content>
+					</Panel>
+					<Panel
+						backgroundDesign="Transparent"
+						headerText="Resume">
+					  <content>
+					    	<upload:UploadSet
+								id="UploadSet"
+								instantUpload="true"
+								showIcons="true"
+								uploadButtonInvisible="true"
+								terminationEnabled="true"
+								fileTypes="txt,doc,png"
+								maxFileNameLength="30"
+								maxFileSize="200"
+								mediaTypes="text/plain,application/msword,image/png"
+								uploadUrl="../../../../upload"
+								items="{jsonModel>/detailCV}"
+								mode="None">
+								<upload:items>
+									<upload:UploadSetItem
+								        	visibleRemove="false"
+											fileName="{jsonModel>FILE_NAME}"
+											url="{jsonModel>URL}"
+											thumbnailUrl="{thumbnailUrl}">
+										<upload:statuses>
+											<ObjectStatus
+													title="{title}"
+													text="{text}"
+													state="{state}"
+													icon="{icon}"
+													active="{active}"/>
+										</upload:statuses>
+									</upload:UploadSetItem>
+								</upload:items>
+							</upload:UploadSet>
+					  </content>
+					</Panel>
+				</l:VerticalLayout>
+			</semantic:content>
+		</semantic:SemanticPage>
+	   </content>
+    </Page>
+</mvc:View>
