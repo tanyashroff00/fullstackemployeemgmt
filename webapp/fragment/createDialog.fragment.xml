@@ -6,16 +6,12 @@
             <Label text="Email" required="true"/>
             <Input id="emailId" value="{jsonModel>/createData/EMP_EMAIL}" />
             <Label text="Profession"/>
-            <!-- <Input value="{jsonModel>/createData/EMP_PRO_PRO_ID}"/> -->
-
-	        <ComboBox id="professionCbId" selectionChange=".XYZ"
+	        <ComboBox id="professionCbId" selectionChange="onProfessionCB"
 				items="{
 					path: '/Professions'
 				}">
 				<core:Item key="{PRO_ID}" text="{PRO_LIST}" />
 			</ComboBox>
-
-
             <Label text="Experiance"/>
             <Input value="{jsonModel>/createData/EMP_EXPERIANCE}"/>  
             <Label text="Salary"/>

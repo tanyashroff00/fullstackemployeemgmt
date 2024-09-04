@@ -6,34 +6,34 @@
     >
     <Page id="page" title="{i18n>title}">
         <content>
-           <fb:FilterBar id="filterbar" persistencyKey="myPersKey" showClearOnFB="true" clear="onClearFilter" useToolbar="false" search=".onSearch"  filterChange=".onFilterChange" afterVariantLoad=".onAfterVariantLoad">
-				<fb:filterGroupItems>
-					<fb:FilterGroupItem name="Name" label="Name" groupName="Group1" visibleInFilterBar="true">
-						<fb:control>
-							<ComboBox id="nameFilterId" name="Name" selectionChange=".onSelectionChangeFilterName"
-											items="{
-												path: '/Employees',
-												templateShareable: true
-											}">
-							    <core:Item key="{EMP_ID}" text="{EMP_NAME}"/>
-							</ComboBox>
-						</fb:control>
-					</fb:FilterGroupItem>
-				</fb:filterGroupItems>
-                	<fb:filterGroupItems>
-					<fb:FilterGroupItem name="Salary" label="Salary" groupName="Group1" visibleInFilterBar="true">
-						<fb:control>
-							<MultiComboBox id="salaryFilterId" name="Salary" selectionChange=".onSelectionChangeFilterSalary"
-											items="{
-												path: '/Employees',
-												templateShareable: true
-											}">
-							    <core:Item key="{EMP_ID}" text="{EMP_SALARY}"/>	
-							</MultiComboBox>
-						</fb:control>
-					</fb:FilterGroupItem>
-				</fb:filterGroupItems>
-		   </fb:FilterBar>
+			<fb:FilterBar id="filterbar" persistencyKey="myPersKey" showClearOnFB="true" clear="onClearFilter" useToolbar="false" search=".onSearch"  filterChange=".onFilterChange" afterVariantLoad=".onAfterVariantLoad">
+					<fb:filterGroupItems>
+						<fb:FilterGroupItem name="Name" label="Name" groupName="Group1" visibleInFilterBar="true">
+							<fb:control>
+								<ComboBox id="nameFilterId" name="Name" selectionChange=".onSelectionChangeFilterName"
+												items="{
+													path: '/Employees',
+													templateShareable: true
+												}">
+									<core:Item key="{EMP_ID}" text="{EMP_NAME}"/>
+								</ComboBox>
+							</fb:control>
+						</fb:FilterGroupItem>
+					</fb:filterGroupItems>
+						<fb:filterGroupItems>
+						<fb:FilterGroupItem name="Salary" label="Salary" groupName="Group1" visibleInFilterBar="true">
+							<fb:control>
+								<MultiComboBox id="salaryFilterId" name="Salary" selectionChange=".onSelectionChangeFilterSalary"
+												items="{
+													path: '/Employees',
+													templateShareable: true
+												}">
+									<core:Item key="{EMP_ID}" text="{EMP_SALARY}"/>	
+								</MultiComboBox>
+							</fb:control>
+						</fb:FilterGroupItem>
+					</fb:filterGroupItems>
+			</fb:FilterBar>
             <Table id="employeesTable" items="{jsonModel>/TableItems}" mode="MultiSelect" selectionChange="onSelectedRecord" updateFinished="onUpdateFinish">
                <headerToolbar>
                     <OverflowToolbar >
@@ -63,7 +63,7 @@
 						</cells>
 				    </ColumnListItem>
 				</items>
-           </Table>
+            </Table>
         </content>
     </Page>
 </mvc:View>

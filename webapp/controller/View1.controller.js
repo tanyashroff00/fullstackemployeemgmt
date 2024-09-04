@@ -132,8 +132,7 @@ sap.ui.define([
                 }
             }, //Create employee record
 
-            XYZ: function(oEvent){
-                debugger;
+            onProfessionCB: function(oEvent){
                 var sModuleID = oEvent.getSource().getSelectedKey();
                 this.getModel("jsonModel").setProperty("/moduleId",sModuleID);
 
@@ -225,6 +224,8 @@ sap.ui.define([
                 this.getRouter().navTo("Detail", {
                     Id: iEmpId
                 });
-            }  //Navigation to detail page
+            },  //Navigation to detail page
+
+
         });
     });
